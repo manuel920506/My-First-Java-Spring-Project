@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Artifactory-global" />
+      <option name="name" value="Artifactory-global" />
+      <option name="url" value="https://almaviva.jfrog.io/artifactory/remote-repos" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Mop-Release" />
+      <option name="name" value="Mop-Release" />
+      <option name="url" value="https://almaviva.jfrog.io/artifactory/mop-release-local" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="Mop-Snapshot" />
+      <option name="name" value="Mop-Snapshot" />
+      <option name="url" value="https://almaviva.jfrog.io/artifactory/mop-snapshot-local" />
+    </remote-repository>
+  </component>
+</project>
