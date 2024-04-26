@@ -2,6 +2,7 @@ package com.clinicabravo.demo.service.implementation;
 
 import com.clinicabravo.demo.dto.CustomerDto;
 import com.clinicabravo.demo.entity.Customer;
+import com.clinicabravo.demo.exception.ResourceNotFoundException;
 import com.clinicabravo.demo.mapper.CustomerMapper;
 import com.clinicabravo.demo.repository.CustomerRepository;
 import com.clinicabravo.demo.service.CustomerService;
@@ -17,5 +18,13 @@ public class CustomerServiceImplementation implements CustomerService {
         Customer customer = CustomerMapper.mapToCustomer(customerDto);
         Customer customerSaved = customerRepository.save(customer);
         return CustomerMapper.mapToCustomerDto(customerSaved);
+    }
+
+    @Override
+    public CustomerDto getCustomerById(Long customerId) {
+        Customer customer = customerRepository.findById(customerId)
+            .orElseThrow(() ->
+                new ResourceNotFoundException(String.format("Customer is not exist with given id: %s ", customerId)));
+        return CustomerMapper.mapToCustomerDto(customer);
     }
 }
