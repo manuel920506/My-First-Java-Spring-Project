@@ -9,6 +9,9 @@ import com.clinicabravo.demo.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class CustomerServiceImplementation implements CustomerService {
@@ -26,5 +29,12 @@ public class CustomerServiceImplementation implements CustomerService {
             .orElseThrow(() ->
                 new ResourceNotFoundException(String.format("Customer is not exist with given id: %s ", customerId)));
         return CustomerMapper.mapToCustomerDto(customer);
+    }
+
+    @Override
+    public List<CustomerDto> getAllCustomers() {
+        List<Customer> customers =  customerRepository.findAll();
+        return customers.stream().map(CustomerMapper::mapToCustomerDto)
+                .collect(Collectors.toList());
     }
 }
