@@ -24,8 +24,8 @@ public class CustomerController {
 
     //Build a Get Customer REST API
     @GetMapping("{id}")
-    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable("id") Long customerDId){
-        CustomerDto customerDto = customerService.getCustomerById(customerDId);
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable("id") Long customerId){
+        CustomerDto customerDto = customerService.getCustomerById(customerId);
         return new ResponseEntity<>(customerDto, HttpStatus.OK);
     }
 
@@ -34,5 +34,13 @@ public class CustomerController {
     public ResponseEntity<List<CustomerDto>> getAllCustomers(){
         List<CustomerDto> customers = customerService.getAllCustomers();
         return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
+    //Build Update Customer REST API
+    @PutMapping("{id}")
+    public ResponseEntity<CustomerDto> updateCustomer(@PathVariable("id") Long customerId,
+                                                      @RequestBody CustomerDto updatedCustomer ){
+        CustomerDto customerDto = customerService.updateCustomer(customerId, updatedCustomer);
+        return new ResponseEntity<>(customerDto, HttpStatus.OK);
     }
 }

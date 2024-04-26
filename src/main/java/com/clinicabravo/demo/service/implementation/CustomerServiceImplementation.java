@@ -37,4 +37,20 @@ public class CustomerServiceImplementation implements CustomerService {
         return customers.stream().map(CustomerMapper::mapToCustomerDto)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public CustomerDto updateCustomer(Long customerId, CustomerDto updatedCustomer) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(String.format("Customer is not exist with given id: %s ", customerId)));
+
+        customer.setFirstName(updatedCustomer.getFirstName());
+        customer.setLastName(updatedCustomer.getLastName());
+        customer.setPhone(updatedCustomer.getPhone());
+        customer.setEmail(updatedCustomer.getEmail());
+
+       Customer  updatedCustomerObj = customerRepository.save(customer);
+
+        return  CustomerMapper.mapToCustomerDto(updatedCustomerObj);
+    }
 }
