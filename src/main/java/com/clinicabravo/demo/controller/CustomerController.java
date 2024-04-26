@@ -43,4 +43,11 @@ public class CustomerController {
         CustomerDto customerDto = customerService.updateCustomer(customerId, updatedCustomer);
         return new ResponseEntity<>(customerDto, HttpStatus.OK);
     }
+
+    //Build Delete Customer REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable("id") Long customerId){
+        customerService.deleteCustomer(customerId);
+        return new ResponseEntity<>("Customer deleted successfully!", HttpStatus.OK);
+    }
 }

@@ -53,4 +53,12 @@ public class CustomerServiceImplementation implements CustomerService {
 
         return  CustomerMapper.mapToCustomerDto(updatedCustomerObj);
     }
+
+    @Override
+    public void deleteCustomer(Long customerId) {
+        Customer customer = customerRepository.findById(customerId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(String.format("Customer is not exist with given id: %s ", customerId)));
+        customerRepository.deleteById(customerId);
+    }
 }
